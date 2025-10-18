@@ -1,0 +1,5 @@
+<h3
+    class="mb-5 text-lg font-semibold text-gray-800 dark:text-white/90 lg:mb-7"
+>
+    {{ $title }}
+</h3>
