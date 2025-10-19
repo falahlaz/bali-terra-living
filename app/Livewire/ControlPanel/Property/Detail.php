@@ -2,14 +2,15 @@
 
 namespace App\Livewire\ControlPanel\Property;
 
-use App\Livewire\Forms\Property\Features\CreateOrUpdateForm;
-use App\Livewire\Forms\Property\Images\CreateForm;
 use App\Livewire\Forms\Property\UpdateForm;
+use App\Models\Feature;
+use App\Models\Location;
 use App\Models\Property;
 use App\Models\PropertyCategory;
 use App\Models\PropertyFeature;
 use App\Models\PropertyImage;
 use App\Properties;
+use App\PropertyUnitOfMeasure;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -24,8 +25,8 @@ class Detail extends Component
 
     public Property $property;
     public UpdateForm $property_form;
-    public CreateOrUpdateForm $feature_form;
-    public CreateForm $image_form;
+    public \App\Livewire\Forms\Property\Features\CreateForm $feature_form;
+    public \App\Livewire\Forms\Property\Images\CreateForm $image_form;
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
@@ -33,18 +34,31 @@ class Detail extends Component
             ->property
             ->load([
                 'category',
-                'features',
-                'images'
+                'location',
+                'features.feature',
+                'images',
+                'details',
             ]);
 
         $categories = PropertyCategory::query()
             ->where('is_active', '=', true)
             ->get();
 
+        $locations = Location::query()
+            ->where('is_active', '=', true)
+            ->get();
+
+        $features = Feature::query()
+            ->where('is_active', '=', true)
+            ->get();
+
         return view('livewire.control-panel.property.detail')
             ->with('page', Properties::PropertyPage)
             ->with('property', $this->property)
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('locations', $locations)
+            ->with('features', $features)
+            ->with('unit_of_measurements', PropertyUnitOfMeasure::cases());
     }
 
     public function mount(): void
@@ -57,12 +71,6 @@ class Detail extends Component
         $this->property_form->store();
     }
 
-    public function editFeature(PropertyFeature $feature): void
-    {
-        $this->feature_form->setFeature($feature);
-        $this->dispatch('$refresh');
-    }
-
     public function deleteFeature(PropertyFeature $feature): void
     {
         $feature->delete();
@@ -70,8 +78,7 @@ class Detail extends Component
 
     public function submitFeature(): void
     {
-        $this->feature_form->store($this->property->id);
-        $this->feature_form->feature = null;
+        $this->feature_form->store($this->property);
         $this->feature_form->reset();
     }
 
@@ -91,5 +98,18 @@ class Detail extends Component
     {
        $image->is_active = !$image->is_active;
        $image->save();
+    }
+
+    public function togglePrimary(PropertyImage $image): void
+    {
+        $this->property
+            ->images()
+            ->where('is_primary', '=', true)
+            ->update([
+                'is_primary' => false,
+            ]);
+
+        $image->is_primary = !$image->is_primary;
+        $image->save();
     }
 }

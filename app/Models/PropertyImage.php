@@ -14,8 +14,13 @@ class PropertyImage extends Model
      */
     protected $fillable = [
         'property_id',
+        'image_url',
         'path',
         'name',
+        'title',
+        'alt_text',
+        'display_order',
+        'is_primary',
         'is_active'
     ];
 
@@ -34,6 +39,7 @@ class PropertyImage extends Model
     protected function casts(): array
     {
         return [
+            'is_primary' => 'boolean',
             'is_active' => 'boolean',
         ];
     }

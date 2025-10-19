@@ -19,16 +19,16 @@ class Index extends Component
     {
         $properties = Property::query()
             ->with('category')
+            ->with('location')
             ->select([
                 'id',
                 'property_category_id',
+                'location_id',
                 'name',
                 'price',
-                'width',
-                'uom',
-                'location',
-                'is_active',
-                'created_at'
+                'currency',
+                'status',
+                'is_active'
             ])
             ->paginate($this->pageSize);
 

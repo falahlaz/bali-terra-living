@@ -7,15 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PropertyFeature extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'is_active'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -24,20 +16,13 @@ class PropertyFeature extends Model
      */
     protected $hidden = [];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'is_active' => 'boolean',
-        ];
-    }
-
     public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
+    }
+
+    public function feature(): BelongsTo
+    {
+        return $this->belongsTo(Feature::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire\Forms\Property\Images;
 use App\Models\Property;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -22,8 +23,11 @@ class CreateForm extends Form
             }
 
             $images[] = [
+                'image_url' => '/storage' . $path,
                 'path' => $path,
                 'name' => $image['name'],
+                'title' => $image['name'],
+                'alt' => Str::slug($image['name']),
             ];
         }
 

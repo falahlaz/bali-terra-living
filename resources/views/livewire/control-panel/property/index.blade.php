@@ -22,6 +22,7 @@
                     <x-tables.cells.header title="Category"/>
                     <x-tables.cells.header title="Price"/>
                     <x-tables.cells.header title="Location"/>
+                    <x-tables.cells.header title="Status"/>
                     <x-tables.cells.header title="Is Active"/>
                     <x-tables.cells.header title="Action"/>
                 </x-tables.header>
@@ -32,8 +33,10 @@
                             <x-tables.cells.body :data="$loop->iteration"/>
                             <x-tables.cells.body :data="$property->name"/>
                             <x-tables.cells.body :data="$property->category->name"/>
-                            <x-tables.cells.body :data="$property->price"/>
-                            <x-tables.cells.body :data="$property->location ?? '-'"/>
+                            <x-tables.cells.body
+                                :data="($property->currency === 'IDR' ? 'Rp. ' : '$ ') . number_format($property->price)"/>
+                            <x-tables.cells.body :data="$property->location->name"/>
+                            <x-tables.cells.body :data="ucfirst($property->status->value)"/>
                             <x-tables.cells.body-with-variant :variant="$property->is_active ? 'success' : 'danger'" :data="$property->is_active ? 'Active' : 'Inactive'"/>
                             <x-tables.cells.body>
                                 <x-button

@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use App\PropertyStatus;
 use App\PropertyUnitOfMeasure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Property extends Model
 {
+    use SoftDeletes;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,12 +20,38 @@ class Property extends Model
      */
     protected $fillable = [
         'property_category_id',
+        'location_id',
         'name',
+        'slug',
+        'status',
         'price',
-        'width',
+        'currency',
+        'price_negotiable',
+
+        'location_detail',
+        'latitude',
+        'longitude',
+
+        'surface_area',
+        'building_area',
         'uom',
-        'location',
-        'is_active'
+        'rooms',
+        'bathrooms',
+        'year_built',
+        'description',
+        'short_description',
+
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+
+        'view_count',
+        'inquiry_count',
+        'featured',
+        'priority',
+        'is_active',
+
+        'published_at',
     ];
 
     /**
@@ -39,11 +69,29 @@ class Property extends Model
     protected function casts(): array
     {
         return [
+            'status' => PropertyStatus::class,
             'price' => 'float',
-            'width' => 'float',
+            'price_negotiable' => 'boolean',
+            'latitude' => 'float',
+            'longitude' => 'float',
+            'surface_area' => 'float',
+            'building_area' => 'float',
             'uom' => PropertyUnitOfMeasure::class,
+            'rooms' => 'integer',
+            'bathrooms' => 'integer',
+            'year_built' => 'integer',
+            'view_count' => 'integer',
+            'inquiry_count' => 'integer',
+            'featured' => 'boolean',
+            'priority' => 'boolean',
             'is_active' => 'boolean',
+            'published_at' => 'datetime',
         ];
+    }
+
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
     }
 
     public function category(): BelongsTo
@@ -59,5 +107,25 @@ class Property extends Model
     public function images(): HasMany
     {
         return $this->hasMany(PropertyImage::class);
+    }
+
+    public function details(): HasMany
+    {
+        return $this->hasMany(PropertyDetail::class);
+    }
+
+    public function views(): HasMany
+    {
+        return $this->hasMany(PropertyView::class);
+    }
+
+    public function inquiries(): HasMany
+    {
+        return $this->hasMany(Inquiry::class);
+    }
+
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

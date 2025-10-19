@@ -8,6 +8,8 @@
     'viewBox' => '0 0 20 20',
     'path' => '',
     'additionalClass' => '',
+    'remove_icon_loading' => false,
+    'target' => null,
 ])
 
 @php
@@ -28,6 +30,8 @@
 
         @if ($with_icon)
             <svg
+                @if($remove_icon_loading) wire:loading.remove @endif
+            @if($target) wire:target="{{ $target }}" @endif
                 class="fill-current"
                 width="{{$width}}"
                 height="{{$height}}"
@@ -57,6 +61,8 @@
 
         @if ($with_icon)
             <svg
+                @if($remove_icon_loading) wire:loading.remove @endif
+            @if($target) wire:target="{{ $target }}" @endif
                 class="fill-current"
                 width="{{$width}}"
                 height="{{$height}}"
