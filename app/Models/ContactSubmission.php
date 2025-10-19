@@ -6,7 +6,7 @@ use App\ContactStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Contact extends Model
+class ContactSubmission extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,12 @@ class Contact extends Model
         'phone_number',
         'interested_in',
         'message',
+        'ip_address',
+        'user_agent',
+        'referrer',
         'status',
+        'assigned_to',
+        'notes',
         'processed_at',
         'processed_by',
     ];
@@ -47,5 +52,10 @@ class Contact extends Model
     public function admin(): BelongsTo
     {
         return $this->belongsTo(User::class, 'processed_by');
+    }
+
+    public function assignee(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Livewire\ControlPanel\Contacts;
 
-use App\Models\Contact;
+use App\Models\ContactSubmission;
 use App\Properties;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -12,7 +12,7 @@ use Livewire\Component;
 #[Layout('components.layouts.app', ['page' => Properties::UserContactPage])]
 class Detail extends Component
 {
-    public Contact $contact;
+    public ContactSubmission $contact;
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
         $this->contact->load('admin');

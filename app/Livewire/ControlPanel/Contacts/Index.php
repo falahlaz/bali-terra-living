@@ -2,7 +2,7 @@
 
 namespace App\Livewire\ControlPanel\Contacts;
 
-use App\Models\Contact;
+use App\Models\ContactSubmission;
 use App\Properties;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -14,7 +14,7 @@ class Index extends Component
 {
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        $contacts = Contact::with('admin')
+        $contacts = ContactSubmission::with('admin')
             ->select([
                 'id',
                 'full_name',
