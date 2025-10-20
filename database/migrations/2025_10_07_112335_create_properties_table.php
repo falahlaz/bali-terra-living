@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\PropertyCategory;
 use App\Models\Location;
+use App\Models\PropertyCategory;
 use App\PropertyStatus;
 use App\PropertyUnitOfMeasure;
 use Illuminate\Database\Migrations\Migration;

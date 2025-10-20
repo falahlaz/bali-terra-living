@@ -25,7 +25,7 @@ class PropertyCategorySeeder extends Seeder
                 [
                     'name' => 'House',
                     'is_active' => true,
-                ]
+                ],
             ]);
     }
 }

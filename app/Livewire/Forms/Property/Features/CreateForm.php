@@ -3,7 +3,6 @@
 namespace App\Livewire\Forms\Property\Features;
 
 use App\Models\Property;
-use App\Models\PropertyFeature;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 

@@ -76,6 +76,7 @@ class CreateForm extends Form
 
         $validated['status'] = PropertyStatus::Available;
         $validated['published_at'] = now();
+
         return Property::query()->create($validated);
     }
 }

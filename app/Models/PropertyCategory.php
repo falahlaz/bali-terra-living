@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\PropertyUnitOfMeasure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -15,7 +14,7 @@ class PropertyCategory extends Model
      */
     protected $fillable = [
         'name',
-        'is_active'
+        'is_active',
     ];
 
     /**

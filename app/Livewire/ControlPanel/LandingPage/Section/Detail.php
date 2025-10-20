@@ -4,7 +4,6 @@ namespace App\Livewire\ControlPanel\LandingPage\Section;
 
 use App\Livewire\Forms\LandingPage\Section\UpdateForm;
 use App\Models\PageSection;
-use App\Models\SectionContent;
 use App\PageProperties;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -15,6 +14,7 @@ use Livewire\Component;
 class Detail extends Component
 {
     public PageSection $section;
+
     public UpdateForm $form;
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
@@ -32,6 +32,7 @@ class Detail extends Component
     {
         $this->form->store($this->section);
         $this->form->reset();
+
         return redirect()->route('cp.sections.index');
     }
 }

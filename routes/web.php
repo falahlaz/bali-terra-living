@@ -16,10 +16,10 @@ Route::prefix('/cp')->group(function () {
         ->get('/sign-in', \App\Livewire\ControlPanel\Auth\SignIn::class)
         ->name('cp.sign-in');
 
-    Route::middleware('auth:web')->group(function() {
+    Route::middleware('auth:web')->group(function () {
         Route::get('/dashboard', \App\Livewire\ControlPanel\Dashboard\Index::class)->name('cp.dashboard.index');
 
-        Route::prefix('/contacts')->group(function() {
+        Route::prefix('/contacts')->group(function () {
             Route::get('', \App\Livewire\ControlPanel\Contacts\Index::class)->name('cp.contacts.index');
             Route::get('/{contact}', \App\Livewire\ControlPanel\Contacts\Detail::class)->name('cp.contacts.detail');
         });
@@ -32,11 +32,10 @@ Route::prefix('/cp')->group(function () {
             });
         });
 
-        Route::prefix('properties')->group(function() {
+        Route::prefix('properties')->group(function () {
             Route::get('', \App\Livewire\ControlPanel\Property\Index::class)->name('cp.properties.index');
             Route::get('/create', \App\Livewire\ControlPanel\Property\Create::class)->name('cp.properties.create');
             Route::get('/{property}', \App\Livewire\ControlPanel\Property\Detail::class)->name('cp.properties.detail');
         });
     });
 });
-

@@ -21,7 +21,7 @@ class PropertyImage extends Model
         'alt_text',
         'display_order',
         'is_primary',
-        'is_active'
+        'is_active',
     ];
 
     /**

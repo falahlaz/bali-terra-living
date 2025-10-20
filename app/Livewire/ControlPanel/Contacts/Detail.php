@@ -13,9 +13,11 @@ use Livewire\Component;
 class Detail extends Component
 {
     public ContactSubmission $contact;
+
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
         $this->contact->load('admin');
+
         return view('livewire.control-panel.contacts.detail')
             ->with('page', PageProperties::UserContactPage)
             ->with('contact', $this->contact);

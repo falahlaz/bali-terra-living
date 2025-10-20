@@ -6,7 +6,6 @@ use App\Models\Property;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class CreateForm extends Form

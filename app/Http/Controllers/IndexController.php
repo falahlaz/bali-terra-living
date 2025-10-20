@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -22,7 +21,7 @@ class IndexController extends Controller
                 'width',
                 'uom',
                 'location',
-                'is_active'
+                'is_active',
             ])
             ->with([
                 'category',
@@ -31,7 +30,7 @@ class IndexController extends Controller
                 },
                 'images' => function (HasMany $query) {
                     $query->where('is_active', '=', true);
-                }
+                },
             ])
             ->where('is_active', '=', true)
             ->get();

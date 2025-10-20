@@ -3,16 +3,20 @@
 namespace App\Livewire\Forms\LandingPage\Section;
 
 use App\Models\PageSection;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class UpdateForm extends Form
 {
     public ?string $page_name;
+
     public ?string $section_key;
+
     public ?string $section_name;
+
     public ?int $display_order;
+
     public ?bool $is_active = false;
+
     private PageSection $section;
 
     public function rules(): array

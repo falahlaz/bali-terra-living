@@ -27,7 +27,7 @@ class ContactController extends Controller
         });
 
         return back()->with([
-            'message' => 'Your message successfully sent!'
+            'message' => 'Your message successfully sent!',
         ]);
     }
 }

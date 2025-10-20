@@ -37,6 +37,7 @@ class Create extends Component
     public function store(): \Illuminate\Http\RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
     {
         $property = $this->form->store();
+
         return redirect()->route('cp.properties.detail', [$property->id]);
     }
 }

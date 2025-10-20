@@ -16,7 +16,7 @@ class Review extends Model
         'picture',
         'job',
         'location',
-        'is_active'
+        'is_active',
     ];
 
     /**

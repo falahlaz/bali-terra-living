@@ -17,7 +17,7 @@ class PageSection extends Model
         'section_key',
         'section_name',
         'display_order',
-        'is_active'
+        'is_active',
     ];
 
     /**

@@ -15,6 +15,7 @@ class Index extends Component
 {
     #[Url]
     public $pageSize = 10;
+
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
         $properties = Property::query()
@@ -28,7 +29,7 @@ class Index extends Component
                 'price',
                 'currency',
                 'status',
-                'is_active'
+                'is_active',
             ])
             ->paginate($this->pageSize);
 

@@ -24,8 +24,11 @@ class Detail extends Component
     use WithFileUploads;
 
     public Property $property;
+
     public UpdateForm $property_form;
+
     public \App\Livewire\Forms\Property\Features\CreateForm $feature_form;
+
     public \App\Livewire\Forms\Property\Images\CreateForm $image_form;
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
@@ -96,8 +99,8 @@ class Detail extends Component
 
     public function toggleImageStatus(PropertyImage $image): void
     {
-       $image->is_active = !$image->is_active;
-       $image->save();
+        $image->is_active = !$image->is_active;
+        $image->save();
     }
 
     public function togglePrimary(PropertyImage $image): void

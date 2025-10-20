@@ -10,6 +10,7 @@ class SignOut extends Component
     public function signOut(): \Illuminate\Http\RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
     {
         Auth::logout();
+
         return redirect()->route('cp.sign-in');
     }
 
