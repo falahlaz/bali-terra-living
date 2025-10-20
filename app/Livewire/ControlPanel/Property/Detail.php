@@ -99,7 +99,7 @@ class Detail extends Component
 
     public function toggleImageStatus(PropertyImage $image): void
     {
-        $image->is_active = !$image->is_active;
+        $image->is_active = ! $image->is_active;
         $image->save();
     }
 
@@ -112,7 +112,7 @@ class Detail extends Component
                 'is_primary' => false,
             ]);
 
-        $image->is_primary = !$image->is_primary;
+        $image->is_primary = ! $image->is_primary;
         $image->save();
     }
 }

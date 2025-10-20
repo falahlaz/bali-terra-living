@@ -4,13 +4,13 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\IndexController::class);
-Route::get('/properties', fn() => view('landing-page.property.index'))->name('property.index');
-Route::get('/properties/{property}', fn() => view('landing-page.property.detail'))->name('property.detail');
+Route::get('/properties', fn () => view('landing-page.property.index'))->name('property.index');
+Route::get('/properties/{property}', fn () => view('landing-page.property.detail'))->name('property.detail');
 
 Route::post('/contacts', [ContactController::class, 'submit'])->name('contact.store');
 
 Route::prefix('/cp')->group(function () {
-    Route::get('', fn() => redirect()->route('cp.dashboard.index'));
+    Route::get('', fn () => redirect()->route('cp.dashboard.index'));
 
     Route::middleware('guest')
         ->get('/sign-in', \App\Livewire\ControlPanel\Auth\SignIn::class)

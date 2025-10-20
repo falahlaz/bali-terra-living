@@ -17,12 +17,12 @@ class CreateForm extends Form
         $images = [];
         foreach ($this->images as $image) {
             $path = Storage::disk('public')->putFile('properties', new File($image['path']));
-            if (!$path) {
+            if (! $path) {
                 continue;
             }
 
             $images[] = [
-                'image_url' => '/storage' . $path,
+                'image_url' => '/storage'.$path,
                 'path' => $path,
                 'name' => $image['name'],
                 'title' => $image['name'],

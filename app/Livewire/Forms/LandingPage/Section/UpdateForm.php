@@ -23,7 +23,7 @@ class UpdateForm extends Form
     {
         return [
             'page_name' => 'required|string',
-            'section_key' => 'required|string|unique:page_sections,section_key,' . $this->section->id,
+            'section_key' => 'required|string|unique:page_sections,section_key,'.$this->section->id,
             'section_name' => 'required|string',
             'display_order' => 'required|integer',
             'is_active' => 'bool',

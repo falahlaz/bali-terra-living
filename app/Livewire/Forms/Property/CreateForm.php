@@ -71,7 +71,7 @@ class CreateForm extends Form
         $validated['slug'] = Str::slug($validated['name']);
         $count = 1;
         while (Property::query()->where('slug', $validated['slug'])->exists()) {
-            $validated['slug'] = Str::slug($validated['slug']) . '-' . $count++;
+            $validated['slug'] = Str::slug($validated['slug']).'-'.$count++;
         }
 
         $validated['status'] = PropertyStatus::Available;

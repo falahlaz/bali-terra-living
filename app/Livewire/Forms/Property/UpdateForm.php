@@ -96,7 +96,7 @@ class UpdateForm extends Form
             $this->property->slug = Str::slug($this->name);
             $count = 1;
             while (Property::query()->where('slug', $this->property->slug)->exists()) {
-                $this->property->slug = Str::slug($this->name) . '-' . $count++;
+                $this->property->slug = Str::slug($this->name).'-'.$count++;
             }
         }
 
