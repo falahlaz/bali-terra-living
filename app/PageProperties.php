@@ -14,5 +14,7 @@ class PageProperties
 
     const BenefitPage = 'Benefit';
 
+    const MenuPage = 'Menu';
+
     const PropertyPage = 'Property';
 }

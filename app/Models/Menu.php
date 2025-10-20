@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\MenuLocation;
+use App\MenuTarget;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class LandingPageMenu extends Model
+class Menu extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,9 +15,14 @@ class LandingPageMenu extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'menu_location',
+        'parent_id',
+        'label',
+        'url',
+        'target',
+        'icon',
+        'display_order',
         'is_active',
-        'redirect',
     ];
 
     /**
@@ -33,12 +40,14 @@ class LandingPageMenu extends Model
     protected function casts(): array
     {
         return [
+            'menu_location' => MenuLocation::class,
+            'target' => MenuTarget::class,
             'is_active' => 'boolean',
         ];
     }
 
-    public function contents(): HasMany
+    public function parent(): BelongsTo
     {
-        return $this->hasMany(LandingPageContent::class);
+        return $this->belongsTo(Menu::class, 'parent_id');
     }
 }

@@ -130,10 +130,10 @@
                             href="#"
                             @click.prevent="selected = (selected === 'Landing Page' ? '': 'Landing Page')"
                             class="menu-item group"
-                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit') ? 'menu-item-active' : 'menu-item-inactive'"
+                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu') ? 'menu-item-active' : 'menu-item-inactive'"
                         >
                             <svg
-                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
@@ -182,6 +182,16 @@
                                 :class="sidebarToggle ? 'lg:hidden' : 'flex'"
                                 class="flex flex-col gap-1 mt-2 menu-dropdown pl-9"
                             >
+                                <li>
+                                    <a
+                                        href="{{ route('cp.menus.index') }}"
+                                        class="menu-dropdown-item group"
+                                        :class="page === 'Menu' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                    >
+                                        Menus
+                                    </a>
+                                </li>
+
                                 <li>
                                     <a
                                         href="{{ route('cp.sections.index') }}"

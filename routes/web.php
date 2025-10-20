@@ -48,6 +48,12 @@ Route::prefix('/cp')->group(function () {
                 Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Benefit\Create::class)->name('cp.benefits.create');
                 Route::get('/{benefit}', \App\Livewire\ControlPanel\LandingPage\Benefit\Detail::class)->name('cp.benefits.detail');
             });
+
+            Route::prefix('/menus')->group(function () {
+                Route::get('', \App\Livewire\ControlPanel\LandingPage\Menu\Index::class)->name('cp.menus.index');
+                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Menu\Create::class)->name('cp.menus.create');
+                Route::get('/{menu}', \App\Livewire\ControlPanel\LandingPage\Menu\Detail::class)->name('cp.menus.detail');
+            });
         });
 
         Route::prefix('properties')->group(function () {
