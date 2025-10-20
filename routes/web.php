@@ -30,6 +30,12 @@ Route::prefix('/cp')->group(function () {
                 Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Section\Create::class)->name('cp.sections.create');
                 Route::get('/{section}', \App\Livewire\ControlPanel\LandingPage\Section\Detail::class)->name('cp.sections.detail');
             });
+
+            Route::prefix('/contents')->group(function () {
+                Route::get('', \App\Livewire\ControlPanel\LandingPage\Content\Index::class)->name('cp.contents.index');
+                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Content\Create::class)->name('cp.contents.create');
+                Route::get('/{content}', \App\Livewire\ControlPanel\LandingPage\Content\Detail::class)->name('cp.contents.detail');
+            });
         });
 
         Route::prefix('properties')->group(function () {

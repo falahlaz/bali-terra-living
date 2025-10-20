@@ -8,7 +8,7 @@ class PageProperties
 
     const SectionPage = 'Sections';
 
-    const LandingPageContentMenu = 'Landing Page Content';
+    const ContentPage = 'Contents';
 
     const PropertyPage = 'Property';
 }

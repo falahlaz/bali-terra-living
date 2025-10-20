@@ -186,9 +186,19 @@
                                     <a
                                         href="{{ route('cp.sections.index') }}"
                                         class="menu-dropdown-item group"
-                                        :class="page === 'Sections' || page === 'Contents' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                        :class="page === 'Sections' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                                     >
                                         Sections
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="{{ route('cp.contents.index') }}"
+                                        class="menu-dropdown-item group"
+                                        :class="page === 'Contents' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                    >
+                                        Contents
                                     </a>
                                 </li>
                             </ul>
