@@ -42,6 +42,12 @@ Route::prefix('/cp')->group(function () {
                 Route::get('/create', \App\Livewire\ControlPanel\LandingPage\About\Create::class)->name('cp.about.create');
                 Route::get('/{about}', \App\Livewire\ControlPanel\LandingPage\About\Detail::class)->name('cp.about.detail');
             });
+
+            Route::prefix('/benefits')->group(function () {
+                Route::get('', \App\Livewire\ControlPanel\LandingPage\Benefit\Index::class)->name('cp.benefits.index');
+                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Benefit\Create::class)->name('cp.benefits.create');
+                Route::get('/{benefit}', \App\Livewire\ControlPanel\LandingPage\Benefit\Detail::class)->name('cp.benefits.detail');
+            });
         });
 
         Route::prefix('properties')->group(function () {

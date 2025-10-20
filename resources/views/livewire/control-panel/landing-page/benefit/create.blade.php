@@ -195,7 +195,7 @@
                         </x-button>
 
                         <x-button
-                            :href="route('cp.about.index')"
+                            :href="route('cp.benefits.index')"
                             variant="danger"
                             text="Back"
                         />

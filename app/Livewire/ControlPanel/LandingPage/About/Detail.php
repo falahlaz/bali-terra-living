@@ -2,7 +2,7 @@
 
 namespace App\Livewire\ControlPanel\LandingPage\About;
 
-use App\AboutCardIconType;
+use App\IconType;
 use App\Livewire\Forms\LandingPage\About\UpdateForm;
 use App\Models\AboutCard;
 use App\PageProperties;
@@ -22,7 +22,7 @@ class Detail extends Component
     {
         return view('livewire.control-panel.landing-page.about.detail')
             ->with('page', PageProperties::AboutPage)
-            ->with('icon_types', AboutCardIconType::cases());
+            ->with('icon_types', IconType::cases());
     }
 
     public function mount(): void

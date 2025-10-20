@@ -2,7 +2,7 @@
 
 namespace App;
 
-enum AboutCardIconType: string
+enum IconType: string
 {
     case Svg = 'svg';
     case Image = 'image';

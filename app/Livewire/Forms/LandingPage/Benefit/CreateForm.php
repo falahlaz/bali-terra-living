@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Forms\LandingPage\About;
+namespace App\Livewire\Forms\LandingPage\Benefit;
 
 use App\IconType;
-use App\Models\AboutCard;
+use App\Models\Benefit;
 use Illuminate\Validation\Rule;
 use Livewire\Form;
 
-class UpdateForm extends Form
+class CreateForm extends Form
 {
     public ?string $title;
 
@@ -29,30 +29,19 @@ class UpdateForm extends Form
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'icon' => ['nullable', 'string'],
-            'icon_type' => ['required_with:icon', 'nullable', 'string', Rule::enum(IconType::class)],
+            'icon_type' => ['required_with:icon', 'string', Rule::enum(IconType::class)],
             'icon_content' => ['nullable', 'string'],
             'display_order' => ['required', 'integer'],
             'is_active' => ['required', 'boolean'],
         ];
     }
 
-    public function setForm(AboutCard $about): void
-    {
-        $this->title = $about->title;
-        $this->description = $about->description;
-        $this->icon = $about->icon;
-        $this->icon_type = $about->icon_type->value;
-        $this->icon_content = $about->icon_content;
-        $this->display_order = $about->display_order;
-        $this->is_active = $about->is_active;
-    }
-
-    public function store(AboutCard $about): void
+    public function store(): void
     {
         $validated = $this->validate();
         if (! $validated['icon_type']) {
             $validated['icon_type'] = IconType::Svg;
         }
-        $about->update($validated);
+        Benefit::query()->create($validated);
     }
 }

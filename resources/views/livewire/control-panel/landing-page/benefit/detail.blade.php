@@ -152,7 +152,7 @@
                         </div>
 
                         <div>
-                            <div x-data="{ isActiveSwitcherToggle: false }">
+                            <div x-data="{ isActiveSwitcherToggle: @entangle('form.is_active') }">
                                 <label
                                     for="is_active"
                                     class="flex cursor-pointer items-center gap-3 text-sm font-medium text-gray-700 select-none dark:text-gray-400"
@@ -163,7 +163,6 @@
                                             type="checkbox"
                                             id="is_active"
                                             class="sr-only"
-                                            @change="isActiveSwitcherToggle = !isActiveSwitcherToggle"
                                         />
                                         <div
                                             class="block h-6 w-11 rounded-full"
@@ -188,14 +187,14 @@
 
                     <div class="flex justify-end">
                         <x-button
-                            text="Submit"
+                            text="Update"
                             additional-class="mr-2"
                         >
                             <x-button.loading target="store"/>
                         </x-button>
 
                         <x-button
-                            :href="route('cp.about.index')"
+                            :href="route('cp.benefits.index')"
                             variant="danger"
                             text="Back"
                         />

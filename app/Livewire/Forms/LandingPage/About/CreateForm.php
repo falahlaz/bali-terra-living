@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Forms\LandingPage\About;
 
-use App\AboutCardIconType;
+use App\IconType;
 use App\Models\AboutCard;
 use Illuminate\Validation\Rule;
 use Livewire\Form;
@@ -29,7 +29,7 @@ class CreateForm extends Form
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'icon' => ['nullable', 'string'],
-            'icon_type' => ['required_with:icon', 'string', Rule::enum(AboutCardIconType::class)],
+            'icon_type' => ['required_with:icon', 'string', Rule::enum(IconType::class)],
             'icon_content' => ['nullable', 'string'],
             'display_order' => ['required', 'integer'],
             'is_active' => ['required', 'boolean'],
@@ -40,7 +40,7 @@ class CreateForm extends Form
     {
         $validated = $this->validate();
         if (! $validated['icon_type']) {
-            $validated['icon_type'] = AboutCardIconType::Svg;
+            $validated['icon_type'] = IconType::Svg;
         }
         AboutCard::create($validated);
     }

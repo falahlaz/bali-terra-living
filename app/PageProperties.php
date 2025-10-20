@@ -12,5 +12,7 @@ class PageProperties
 
     const AboutPage = 'About';
 
+    const BenefitPage = 'Benefit';
+
     const PropertyPage = 'Property';
 }

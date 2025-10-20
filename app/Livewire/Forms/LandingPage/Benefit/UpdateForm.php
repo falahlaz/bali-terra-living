@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Forms\LandingPage\About;
+namespace App\Livewire\Forms\LandingPage\Benefit;
 
 use App\IconType;
-use App\Models\AboutCard;
+use App\Models\Benefit;
 use Illuminate\Validation\Rule;
 use Livewire\Form;
 
@@ -36,23 +36,23 @@ class UpdateForm extends Form
         ];
     }
 
-    public function setForm(AboutCard $about): void
+    public function setForm(Benefit $benefit): void
     {
-        $this->title = $about->title;
-        $this->description = $about->description;
-        $this->icon = $about->icon;
-        $this->icon_type = $about->icon_type->value;
-        $this->icon_content = $about->icon_content;
-        $this->display_order = $about->display_order;
-        $this->is_active = $about->is_active;
+        $this->title = $benefit->title;
+        $this->description = $benefit->description;
+        $this->icon = $benefit->icon;
+        $this->icon_type = $benefit->icon_type->value;
+        $this->icon_content = $benefit->icon_content;
+        $this->display_order = $benefit->display_order;
+        $this->is_active = $benefit->is_active;
     }
 
-    public function store(AboutCard $about): void
+    public function store(Benefit $benefit): void
     {
         $validated = $this->validate();
         if (! $validated['icon_type']) {
             $validated['icon_type'] = IconType::Svg;
         }
-        $about->update($validated);
+        $benefit->update($validated);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use App\IconType;
 use Illuminate\Database\Eloquent\Model;
 
-class AboutCard extends Model
+class Benefit extends Model
 {
     /**
      * The attributes that are mass assignable.

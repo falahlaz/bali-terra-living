@@ -2,7 +2,7 @@
 
 namespace App\Livewire\ControlPanel\LandingPage\About;
 
-use App\AboutCardIconType;
+use App\IconType;
 use App\Livewire\Forms\LandingPage\About\CreateForm;
 use App\PageProperties;
 use Livewire\Attributes\Layout;
@@ -19,7 +19,7 @@ class Create extends Component
     {
         return view('livewire.control-panel.landing-page.about.create')
             ->with('page', PageProperties::AboutPage)
-            ->with('icon_types', AboutCardIconType::cases());
+            ->with('icon_types', IconType::cases());
     }
 
     public function store(): \Illuminate\Http\RedirectResponse|\Livewire\Features\SupportRedirects\Redirector
