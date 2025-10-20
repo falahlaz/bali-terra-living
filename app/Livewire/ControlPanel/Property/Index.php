@@ -3,14 +3,14 @@
 namespace App\Livewire\ControlPanel\Property;
 
 use App\Models\Property;
-use App\Properties;
+use App\PageProperties;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
-#[Title('Properties - Control Panel')]
-#[Layout('components.layouts.app', ['page' => Properties::PropertyPage])]
+#[Title('PageProperties - Control Panel')]
+#[Layout('components.layouts.app', ['page' => PageProperties::PropertyPage])]
 class Index extends Component
 {
     #[Url]
@@ -33,7 +33,7 @@ class Index extends Component
             ->paginate($this->pageSize);
 
         return view('livewire.control-panel.property.index')
-            ->with('page', Properties::PropertyPage)
+            ->with('page', PageProperties::PropertyPage)
             ->with('properties', $properties);
     }
 }

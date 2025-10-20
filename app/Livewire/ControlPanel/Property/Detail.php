@@ -9,7 +9,7 @@ use App\Models\Property;
 use App\Models\PropertyCategory;
 use App\Models\PropertyFeature;
 use App\Models\PropertyImage;
-use App\Properties;
+use App\PageProperties;
 use App\PropertyUnitOfMeasure;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
@@ -18,7 +18,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Title('Detail Property - Control Panel')]
-#[Layout('components.layouts.app', ['page' => Properties::PropertyPage])]
+#[Layout('components.layouts.app', ['page' => PageProperties::PropertyPage])]
 class Detail extends Component
 {
     use WithFileUploads;
@@ -53,7 +53,7 @@ class Detail extends Component
             ->get();
 
         return view('livewire.control-panel.property.detail')
-            ->with('page', Properties::PropertyPage)
+            ->with('page', PageProperties::PropertyPage)
             ->with('property', $this->property)
             ->with('categories', $categories)
             ->with('locations', $locations)

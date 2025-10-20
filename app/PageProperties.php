@@ -1,10 +1,10 @@
 <?php
 namespace App;
 
-class Properties
+class PageProperties
 {
     const UserContactPage = 'User Contacts';
-    const LandingPageMenuPage = 'Landing Page Menu';
+    const SectionPage = 'Sections';
     const LandingPageContentMenu = 'Landing Page Content';
     const PropertyPage = 'Property';
 }

@@ -139,7 +139,7 @@
     </div>
 </section>
 
-<!-- Properties Section -->
+<!-- PageProperties Section -->
 <!-- <CHANGE> Improved card design and spacing -->
 <section id="properties" class="py-24 px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">

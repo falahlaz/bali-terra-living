@@ -25,15 +25,10 @@ Route::prefix('/cp')->group(function () {
         });
 
         Route::prefix('/landing-pages')->group(function () {
-            Route::prefix('/menus')->group(function() {
-                Route::get('', \App\Livewire\ControlPanel\LandingPage\Menu\Index::class)->name('cp.landing-pages.menu.index');
-                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Menu\Create::class)->name('cp.landing-pages.menu.create');
-                Route::get('/{menu}', \App\Livewire\ControlPanel\LandingPage\Menu\Detail::class)->name('cp.landing-pages.menu.detail');
-
-                Route::prefix('/{menu}')->group(function() {
-                    Route::get('/contents/create', \App\Livewire\ControlPanel\LandingPage\Content\Create::class)->name('cp.landing-pages.menu.contents.create');
-                    Route::get('/contents/{content}', \App\Livewire\ControlPanel\LandingPage\Content\Detail::class)->name('cp.landing-pages.menu.contents.detail');
-                });
+            Route::prefix('/sections')->group(function () {
+                Route::get('', \App\Livewire\ControlPanel\LandingPage\Section\Index::class)->name('cp.sections.index');
+                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Section\Create::class)->name('cp.sections.create');
+                Route::get('/{section}', \App\Livewire\ControlPanel\LandingPage\Section\Detail::class)->name('cp.sections.detail');
             });
         });
 

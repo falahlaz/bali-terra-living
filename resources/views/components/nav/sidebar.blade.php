@@ -130,10 +130,10 @@
                             href="#"
                             @click.prevent="selected = (selected === 'Landing Page' ? '': 'Landing Page')"
                             class="menu-item group"
-                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Landing Page Menu' || page === 'Landing Page Content') ? 'menu-item-active' : 'menu-item-inactive'"
+                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents') ? 'menu-item-active' : 'menu-item-inactive'"
                         >
                             <svg
-                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Landing Page Menu' || page === 'Landing Page Content') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
@@ -184,11 +184,11 @@
                             >
                                 <li>
                                     <a
-                                        href="{{ route('cp.landing-pages.menu.index') }}"
+                                        href="{{ route('cp.sections.index') }}"
                                         class="menu-dropdown-item group"
-                                        :class="page === 'Landing Page Menu' || page === 'Landing Page Content' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                        :class="page === 'Sections' || page === 'Contents' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                                     >
-                                        Menus
+                                        Sections
                                     </a>
                                 </li>
                             </ul>

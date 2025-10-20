@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\SectionContentType;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class PageSection extends Model
+class SectionContent extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,11 +14,11 @@ class PageSection extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'page_name',
-        'section_key',
-        'section_name',
+        'page_section_id',
+        'content_key',
+        'content_value',
+        'content_type',
         'display_order',
-        'is_active'
     ];
 
     /**
@@ -27,6 +28,11 @@ class PageSection extends Model
      */
     protected $hidden = [];
 
+    public function pageSection(): BelongsTo
+    {
+        return $this->belongsTo(PageSection::class, 'page_section_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -35,12 +41,7 @@ class PageSection extends Model
     protected function casts(): array
     {
         return [
-            'is_active' => 'boolean',
+            'content_type' => SectionContentType::class,
         ];
-    }
-
-    public function contents(): HasMany
-    {
-        return $this->hasMany(SectionContent::class, 'page_section_id');
     }
 }

@@ -131,7 +131,7 @@
     </div>
 </section>
 
-<!-- Properties Grid -->
+<!-- PageProperties Grid -->
 <section class="px-6 lg:px-8 pb-24">
     <div class="max-w-7xl mx-auto">
         <!-- Results Count -->

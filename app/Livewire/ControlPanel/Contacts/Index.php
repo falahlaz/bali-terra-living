@@ -3,13 +3,13 @@
 namespace App\Livewire\ControlPanel\Contacts;
 
 use App\Models\ContactSubmission;
-use App\Properties;
+use App\PageProperties;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Title('User Contacts - Control Panel')]
-#[Layout('components.layouts.app', ['page' => Properties::UserContactPage])]
+#[Layout('components.layouts.app', ['page' => PageProperties::UserContactPage])]
 class Index extends Component
 {
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -29,7 +29,7 @@ class Index extends Component
             ->paginate(10);
 
         return view('livewire.control-panel.contacts.index')
-            ->with('page', Properties::UserContactPage)
+            ->with('page', PageProperties::UserContactPage)
             ->with('contacts', $contacts);
     }
 }

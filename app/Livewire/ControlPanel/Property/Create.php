@@ -5,14 +5,14 @@ namespace App\Livewire\ControlPanel\Property;
 use App\Livewire\Forms\Property\CreateForm;
 use App\Models\Location;
 use App\Models\PropertyCategory;
-use App\Properties;
+use App\PageProperties;
 use App\PropertyUnitOfMeasure;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Title('Create Property - Control Panel')]
-#[Layout('components.layouts.app', ['page' => Properties::PropertyPage])]
+#[Layout('components.layouts.app', ['page' => PageProperties::PropertyPage])]
 class Create extends Component
 {
     public CreateForm $form;
@@ -28,7 +28,7 @@ class Create extends Component
             ->get();
 
         return view('livewire.control-panel.property.create')
-            ->with('page', Properties::PropertyPage)
+            ->with('page', PageProperties::PropertyPage)
             ->with('categories', $categories)
             ->with('locations', $locations)
             ->with('unit_of_measurements', PropertyUnitOfMeasure::cases());
