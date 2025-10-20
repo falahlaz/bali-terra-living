@@ -10,5 +10,7 @@ class PageProperties
 
     const ContentPage = 'Contents';
 
+    const AboutPage = 'About';
+
     const PropertyPage = 'Property';
 }

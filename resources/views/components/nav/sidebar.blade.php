@@ -130,10 +130,10 @@
                             href="#"
                             @click.prevent="selected = (selected === 'Landing Page' ? '': 'Landing Page')"
                             class="menu-item group"
-                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents') ? 'menu-item-active' : 'menu-item-inactive'"
+                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About') ? 'menu-item-active' : 'menu-item-inactive'"
                         >
                             <svg
-                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
@@ -199,6 +199,16 @@
                                         :class="page === 'Contents' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                                     >
                                         Contents
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="{{ route('cp.about.index') }}"
+                                        class="menu-dropdown-item group"
+                                        :class="page === 'About' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                    >
+                                        About Cards
                                     </a>
                                 </li>
                             </ul>
