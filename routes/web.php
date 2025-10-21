@@ -54,6 +54,12 @@ Route::prefix('/cp')->group(function () {
                 Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Menu\Create::class)->name('cp.menus.create');
                 Route::get('/{menu}', \App\Livewire\ControlPanel\LandingPage\Menu\Detail::class)->name('cp.menus.detail');
             });
+
+            Route::prefix('/social-links')->group(function () {
+                Route::get('', \App\Livewire\ControlPanel\LandingPage\Social\Index::class)->name('cp.social-links.index');
+                Route::get('/create', \App\Livewire\ControlPanel\LandingPage\Social\Create::class)->name('cp.social-links.create');
+                Route::get('/{social}', \App\Livewire\ControlPanel\LandingPage\Social\Detail::class)->name('cp.social-links.detail');
+            });
         });
 
         Route::prefix('properties')->group(function () {

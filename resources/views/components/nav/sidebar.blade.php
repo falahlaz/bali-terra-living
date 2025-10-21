@@ -130,10 +130,10 @@
                             href="#"
                             @click.prevent="selected = (selected === 'Landing Page' ? '': 'Landing Page')"
                             class="menu-item group"
-                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu') ? 'menu-item-active' : 'menu-item-inactive'"
+                            :class=" (selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu' || page === 'Social') ? 'menu-item-active' : 'menu-item-inactive'"
                         >
                             <svg
-                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                                :class="(selected === 'Landing Page') || (page === 'Landing Page' || page === 'Sections' || page === 'Contents' || page === 'About' || page === 'Benefit' || page === 'Menu' || page === 'Social') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
                                 width="24"
                                 height="24"
                                 viewBox="0 0 24 24"
@@ -229,6 +229,16 @@
                                         :class="page === 'Benefit' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                                     >
                                         Benefit
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="{{ route('cp.social-links.index') }}"
+                                        class="menu-dropdown-item group"
+                                        :class="page === 'Social' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                                    >
+                                        Social Media
                                     </a>
                                 </li>
                             </ul>

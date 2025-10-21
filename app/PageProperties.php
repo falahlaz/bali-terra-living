@@ -16,5 +16,7 @@ class PageProperties
 
     const MenuPage = 'Menu';
 
+    const SocialPage = 'Social';
+
     const PropertyPage = 'Property';
 }
