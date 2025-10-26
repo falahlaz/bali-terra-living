@@ -39,6 +39,13 @@ class PageSection extends Model
         ];
     }
 
+    public function getContent($key, $default = '')
+    {
+        $content = $this->contents->where('content_key', $key)->first();
+
+        return $content ? $content->content_value : $default;
+    }
+
     public function contents(): HasMany
     {
         return $this->hasMany(SectionContent::class, 'page_section_id');

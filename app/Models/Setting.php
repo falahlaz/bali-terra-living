@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\SectionContentType;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Setting extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,11 +13,11 @@ class Review extends Model
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'picture',
-        'job',
-        'location',
-        'is_active',
+        'setting_group',
+        'setting_key',
+        'setting_value',
+        'setting_type',
+        'description',
     ];
 
     /**
@@ -34,7 +35,7 @@ class Review extends Model
     protected function casts(): array
     {
         return [
-            'is_active' => 'boolean',
+            'setting_type' => SectionContentType::class,
         ];
     }
 }

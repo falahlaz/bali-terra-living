@@ -29,7 +29,7 @@
                     @foreach($contents as $content)
                         <tr>
                             <x-tables.cells.body :data="$loop->iteration"/>
-                            <x-tables.cells.body :data="$content->pageSection->page_name"/>
+                            <x-tables.cells.body :data="$content->pageSection->page_name . ' - ' . $content->pageSection->section_name"/>
                             <x-tables.cells.body :data="$content->content_key"/>
                             <x-tables.cells.body :data="$content->content_type"/>
                             <x-tables.cells.body :data="$content->display_order"/>

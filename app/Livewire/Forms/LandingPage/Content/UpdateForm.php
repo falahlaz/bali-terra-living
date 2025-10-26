@@ -32,7 +32,6 @@ class UpdateForm extends Form
             'content_key' => [
                 'required',
                 'string',
-                Rule::unique('section_contents', 'content_key')->ignoreModel($this->content),
             ],
             'content_value' => [
                 'string',

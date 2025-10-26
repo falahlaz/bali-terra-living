@@ -30,7 +30,6 @@ class CreateForm extends Form
             'content_key' => [
                 'required',
                 'string',
-                Rule::unique('section_contents', 'content_key'),
             ],
             'content_value' => [
                 'string',

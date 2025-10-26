@@ -39,7 +39,7 @@
                                             value="{{ $section->id }}"
                                             class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                                         >
-                                            {{ $section->page_name }}
+                                            {{ $section->page_name }} - {{ $section->section_name }}
                                         </option>
                                     @endforeach
                                 </select>
