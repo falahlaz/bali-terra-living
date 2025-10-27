@@ -67,7 +67,7 @@
                         <p class="text-earth/60 mb-6 leading-relaxed text-sm">
                             {{ $property->features->take(5)->map(fn ($feature) => $feature->feature->name)->implode(' • ') }}
                         </p>
-                        <x-landing-page.buttons :href="route('property.detail', $property->id)" text="View Details"
+                        <x-landing-page.buttons :href="route('property.detail', $property->slug)" text="View Details"
                                                 additional-class="w-full text-center"/>
                     </div>
                 </div>

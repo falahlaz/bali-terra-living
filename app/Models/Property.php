@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Property extends Model
 {
@@ -127,5 +128,91 @@ class Property extends Model
     public function favorites(): HasMany
     {
         return $this->hasMany(Favorite::class);
+    }
+
+    /**
+     * Get formatted price attribute
+     *
+     * @return string
+     */
+    public function getFormattedPriceAttribute(): string
+    {
+        return \App\Helpers\PriceHelper::format($this->price, $this->currency);
+    }
+
+    /**
+     * Get full formatted price attribute
+     *
+     * @return string
+     */
+    public function getFormattedPriceFullAttribute(): string
+    {
+        return \App\Helpers\PriceHelper::formatFull($this->price, $this->currency);
+    }
+
+    /**
+     * Get formatted surface area with unit
+     *
+     * @return string
+     */
+    public function getFormattedSurfaceAreaAttribute(): string
+    {
+        if (!$this->surface_area || !$this->uom) {
+            return 'N/A';
+        }
+
+        return number_format($this->surface_area, 0) . $this->uom->label();
+    }
+
+    /**
+     * Get formatted building area with unit
+     *
+     * @return string
+     */
+    public function getFormattedBuildingAreaAttribute(): string
+    {
+        if (!$this->building_area || !$this->uom) {
+            return 'N/A';
+        }
+
+        return number_format($this->building_area, 0) . $this->uom->label();
+    }
+
+    /**
+     * Get surface area in square meters (normalized)
+     *
+     * @return float|null
+     */
+    public function getSurfaceAreaInSqmAttribute(): ?float
+    {
+        if (!$this->surface_area || !$this->uom) {
+            return null;
+        }
+
+        return $this->surface_area * $this->uom->toSquareMeters();
+    }
+
+    /**
+     * Get smart formatted surface area (with abbreviation for large areas)
+     *
+     * @return string
+     */
+    public function getSmartSurfaceAreaAttribute(): string
+    {
+        if (!$this->surface_area || !$this->uom) {
+            return 'N/A';
+        }
+
+        return \App\Helpers\AreaHelper::format($this->surface_area, $this->uom, true);
+    }
+
+    /**
+     * Check if property has a building area
+     *
+     * @return bool
+     */
+    public function getHasBuildingAreaAttribute(): bool
+    {
+        return in_array(Str::lower($this->category->name), ['villa', 'house']);
     }
 }

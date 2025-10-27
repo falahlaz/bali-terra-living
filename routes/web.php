@@ -3,9 +3,9 @@
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Http\Controllers\IndexController::class);
-Route::get('/properties', fn () => view('landing-page.property.index'))->name('property.index');
-Route::get('/properties/{property}', fn () => view('landing-page.property.detail'))->name('property.detail');
+Route::get('/', \App\Http\Controllers\IndexController::class)->name('home.index');
+Route::get('/properties', [\App\Http\Controllers\PropertyController::class, 'index'])->name('property.index');
+Route::get('/properties/{property:slug}', [\App\Http\Controllers\PropertyController::class, 'show'])->name('property.detail');
 
 Route::post('/contacts', [ContactController::class, 'submit'])->name('contact.store');
 
