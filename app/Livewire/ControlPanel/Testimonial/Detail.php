@@ -14,6 +14,7 @@ use Livewire\Component;
 class Detail extends Component
 {
     public Testimonial $testimonial;
+
     public CreateOrUpdateForm $form;
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -31,6 +32,7 @@ class Detail extends Component
     {
         $this->form->store($this->testimonial);
         $this->form->reset();
+
         return redirect()->route('cp.testimonials.index');
     }
 }

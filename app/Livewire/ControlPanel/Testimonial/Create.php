@@ -24,6 +24,7 @@ class Create extends Component
     {
         $this->form->store();
         $this->form->reset();
+
         return redirect()->route('cp.testimonials.index');
     }
 }

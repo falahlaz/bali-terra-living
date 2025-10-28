@@ -46,6 +46,7 @@ class PropertyController extends Controller
                 $query->where('is_active', '=', true);
             },
         ]);
+
         return view('landing-page.property.detail')
             ->with('property', $property);
     }

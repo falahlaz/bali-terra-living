@@ -21,12 +21,10 @@ enum PropertyUnitOfMeasure: string
 
     /**
      * Get the display label for the unit
-     *
-     * @return string
      */
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::SquareMeter => 'm²',
             self::SquareFeet => 'ft²',
             self::Hectare => 'ha',
@@ -36,12 +34,10 @@ enum PropertyUnitOfMeasure: string
 
     /**
      * Get conversion factor to square meters
-     *
-     * @return float
      */
     public function toSquareMeters(): float
     {
-        return match($this) {
+        return match ($this) {
             self::SquareMeter => 1,
             self::SquareFeet => 0.092903,
             self::Hectare => 10000,
@@ -51,13 +47,10 @@ enum PropertyUnitOfMeasure: string
 
     /**
      * Convert from square meters to this unit
-     *
-     * @param float $sqm
-     * @return float
      */
     public function fromSquareMeters(float $sqm): float
     {
-        return match($this) {
+        return match ($this) {
             self::SquareMeter => $sqm,
             self::SquareFeet => $sqm / 0.092903,
             self::Hectare => $sqm / 10000,
@@ -67,8 +60,6 @@ enum PropertyUnitOfMeasure: string
 
     /**
      * Get all available units as array
-     *
-     * @return array
      */
     public static function options(): array
     {

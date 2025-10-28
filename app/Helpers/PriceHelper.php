@@ -6,11 +6,6 @@ class PriceHelper
 {
     /**
      * Format price with currency symbol and abbreviation
-     *
-     * @param float $price
-     * @param string $currency
-     * @param bool $showDecimals
-     * @return string
      */
     public static function format(float $price, string $currency = 'USD', bool $showDecimals = false): string
     {
@@ -24,16 +19,11 @@ class PriceHelper
         // Convert to abbreviated format
         $abbreviated = self::abbreviateNumber($price, $currency, $showDecimals);
 
-        return $symbol . ' ' . $abbreviated;
+        return $symbol.' '.$abbreviated;
     }
 
     /**
      * Abbreviate large numbers
-     *
-     * @param float $number
-     * @param string $currency
-     * @param bool $showDecimals
-     * @return string
      */
     private static function abbreviateNumber(float $number, string $currency, bool $showDecimals): string
     {
@@ -44,26 +34,31 @@ class PriceHelper
             if ($number >= 1000000000) {
                 // Billions (Miliar in Indonesian)
                 $abbreviated = $number / 1000000000;
-                return self::formatDecimal($abbreviated, $showDecimals) . 'M'; // M for Miliar
+
+                return self::formatDecimal($abbreviated, $showDecimals).'M'; // M for Miliar
             } elseif ($number >= 1000000) {
                 // Millions (Juta in Indonesian)
                 $abbreviated = $number / 1000000;
-                return self::formatDecimal($abbreviated, $showDecimals) . 'Jt'; // Jt for Juta
+
+                return self::formatDecimal($abbreviated, $showDecimals).'Jt'; // Jt for Juta
             }
         } else {
             // USD and other currencies
             if ($number >= 1000000000) {
                 // Billions
                 $abbreviated = $number / 1000000000;
-                return self::formatDecimal($abbreviated, $showDecimals) . 'B';
+
+                return self::formatDecimal($abbreviated, $showDecimals).'B';
             } elseif ($number >= 1000000) {
                 // Millions
                 $abbreviated = $number / 1000000;
-                return self::formatDecimal($abbreviated, $showDecimals) . 'M';
+
+                return self::formatDecimal($abbreviated, $showDecimals).'M';
             } elseif ($number >= 1000) {
                 // Thousands
                 $abbreviated = $number / 1000;
-                return self::formatDecimal($abbreviated, $showDecimals) . 'K';
+
+                return self::formatDecimal($abbreviated, $showDecimals).'K';
             }
         }
 
@@ -73,10 +68,6 @@ class PriceHelper
 
     /**
      * Format decimal places
-     *
-     * @param float $number
-     * @param bool $showDecimals
-     * @return string
      */
     private static function formatDecimal(float $number, bool $showDecimals): string
     {
@@ -90,10 +81,6 @@ class PriceHelper
 
     /**
      * Get full formatted price (not abbreviated)
-     *
-     * @param float $price
-     * @param string $currency
-     * @return string
      */
     public static function formatFull(float $price, string $currency = 'USD'): string
     {
@@ -106,10 +93,10 @@ class PriceHelper
 
         if ($currency === 'IDR') {
             // Indonesian format: Rp 1.000.000.000
-            return $symbol . ' ' . number_format($price, 0, ',', '.');
+            return $symbol.' '.number_format($price, 0, ',', '.');
         } else {
             // International format: $1,000,000
-            return $symbol . number_format($price, 0, '.', ',');
+            return $symbol.number_format($price, 0, '.', ',');
         }
     }
 }

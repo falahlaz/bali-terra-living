@@ -9,13 +9,21 @@ use Livewire\Form;
 class CreateOrUpdateForm extends Form
 {
     public ?string $client_name;
+
     public ?string $client_title;
+
     public ?string $client_initials;
+
     public ?string $client_avatar;
+
     public ?int $rating;
+
     public ?string $testimonial_text;
+
     public ?int $display_order = 0;
+
     public ?bool $featured = false;
+
     public ?bool $is_active = false;
 
     public function rules(): array
@@ -48,8 +56,9 @@ class CreateOrUpdateForm extends Form
 
     public function store(?Testimonial $testimonial = null): void
     {
-        if (!$testimonial) {
+        if (! $testimonial) {
             Testimonial::create($this->validate());
+
             return;
         }
 

@@ -48,10 +48,11 @@ class Testimonial extends Model
         $words = explode(' ', $this->client_name);
         $initials = '';
         foreach ($words as $word) {
-            if (!empty($word)) { // Ensure the word is not empty
+            if (! empty($word)) { // Ensure the word is not empty
                 $initials .= mb_substr($word, 0, 1, 'UTF-8'); // Use mb_substr for multi-byte support
             }
         }
+
         return mb_strtoupper($initials, 'UTF-8'); // Capitalize the initials
     }
 }

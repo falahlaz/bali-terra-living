@@ -132,8 +132,6 @@ class Property extends Model
 
     /**
      * Get formatted price attribute
-     *
-     * @return string
      */
     public function getFormattedPriceAttribute(): string
     {
@@ -142,8 +140,6 @@ class Property extends Model
 
     /**
      * Get full formatted price attribute
-     *
-     * @return string
      */
     public function getFormattedPriceFullAttribute(): string
     {
@@ -152,40 +148,34 @@ class Property extends Model
 
     /**
      * Get formatted surface area with unit
-     *
-     * @return string
      */
     public function getFormattedSurfaceAreaAttribute(): string
     {
-        if (!$this->surface_area || !$this->uom) {
+        if (! $this->surface_area || ! $this->uom) {
             return 'N/A';
         }
 
-        return number_format($this->surface_area, 0) . $this->uom->label();
+        return number_format($this->surface_area, 0).$this->uom->label();
     }
 
     /**
      * Get formatted building area with unit
-     *
-     * @return string
      */
     public function getFormattedBuildingAreaAttribute(): string
     {
-        if (!$this->building_area || !$this->uom) {
+        if (! $this->building_area || ! $this->uom) {
             return 'N/A';
         }
 
-        return number_format($this->building_area, 0) . $this->uom->label();
+        return number_format($this->building_area, 0).$this->uom->label();
     }
 
     /**
      * Get surface area in square meters (normalized)
-     *
-     * @return float|null
      */
     public function getSurfaceAreaInSqmAttribute(): ?float
     {
-        if (!$this->surface_area || !$this->uom) {
+        if (! $this->surface_area || ! $this->uom) {
             return null;
         }
 
@@ -194,12 +184,10 @@ class Property extends Model
 
     /**
      * Get smart formatted surface area (with abbreviation for large areas)
-     *
-     * @return string
      */
     public function getSmartSurfaceAreaAttribute(): string
     {
-        if (!$this->surface_area || !$this->uom) {
+        if (! $this->surface_area || ! $this->uom) {
             return 'N/A';
         }
 
@@ -208,8 +196,6 @@ class Property extends Model
 
     /**
      * Check if property has a building area
-     *
-     * @return bool
      */
     public function getHasBuildingAreaAttribute(): bool
     {

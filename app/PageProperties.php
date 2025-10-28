@@ -19,5 +19,6 @@ class PageProperties
     const SocialPage = 'Social';
 
     const PropertyPage = 'Property';
+
     const TestimonialPage = 'Testimonial';
 }
