@@ -6,6 +6,7 @@ use App\Models\AboutCard;
 use App\Models\Benefit;
 use App\Models\PageSection;
 use App\Models\Property;
+use App\Models\Testimonial;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
@@ -38,12 +39,19 @@ class IndexController extends Controller
             ->limit(3)
             ->get();
 
+        $testimonials = Testimonial::where('is_active', true)
+            ->orderBy('featured')
+            ->orderBy('display_order')
+            ->limit(3)
+            ->get();
+
         $about_cards = AboutCard::where('is_active', true)->get();
         $benefits = Benefit::where('is_active', true)->get();
 
         return view('landing-page.index')
             ->with('properties', $properties)
             ->with('sections', $sections)
+            ->with('testimonials', $testimonials)
             ->with('about_cards', $about_cards)
             ->with('benefits', $benefits);
     }

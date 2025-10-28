@@ -62,6 +62,12 @@ Route::prefix('/cp')->group(function () {
             });
         });
 
+        Route::prefix('testimonials')->group(function () {
+            Route::get('', \App\Livewire\ControlPanel\Testimonial\Index::class)->name('cp.testimonials.index');
+            Route::get('/create', \App\Livewire\ControlPanel\Testimonial\Create::class)->name('cp.testimonials.create');
+            Route::get('/{testimonial}', \App\Livewire\ControlPanel\Testimonial\Detail::class)->name('cp.testimonials.detail');
+        });
+
         Route::prefix('properties')->group(function () {
             Route::get('', \App\Livewire\ControlPanel\Property\Index::class)->name('cp.properties.index');
             Route::get('/create', \App\Livewire\ControlPanel\Property\Create::class)->name('cp.properties.create');

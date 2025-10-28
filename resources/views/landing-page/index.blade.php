@@ -12,15 +12,19 @@
                         {{ $sections->get('hero')->getContent('description') }}
                     </p>
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <x-landing-page.buttons :href="$sections->get('hero')->getContent('property-button-link')" :text="$sections->get('hero')->getContent('property-button-text')"/>
-                        <x-landing-page.buttons :href="$sections->get('hero')->getContent('contact-button-link')" variant="bg-transparent" :text="$sections->get('hero')->getContent('contact-button-text')"/>
+                        <x-landing-page.buttons :href="$sections->get('hero')->getContent('property-button-link')"
+                                                :text="$sections->get('hero')->getContent('property-button-text')"/>
+                        <x-landing-page.buttons :href="$sections->get('hero')->getContent('contact-button-link')"
+                                                variant="bg-transparent"
+                                                :text="$sections->get('hero')->getContent('contact-button-text')"/>
                     </div>
                 </div>
 
                 <div class="relative">
                     <div class="absolute inset-0 bg-sage/10 rounded-2xl transform translate-x-4 translate-y-4"></div>
                     <img src="{{ $sections->get('hero')->getContent('hero-image-url') }}"
-                         alt="{{ $sections->get('hero')->getContent('hero-image-alt') }}" class="relative rounded-2xl shadow-2xl w-full h-auto">
+                         alt="{{ $sections->get('hero')->getContent('hero-image-alt') }}"
+                         class="relative rounded-2xl shadow-2xl w-full h-auto">
                 </div>
             </div>
         </div>
@@ -88,7 +92,8 @@
             <!-- <CHANGE> Added descriptive image query for Balinese architecture and nature -->
             <div class="relative order-2 lg:order-1">
                 <div class="absolute inset-0 rounded-2xl transform -translate-x-4 translate-y-4"></div>
-                <img src="{{ $sections->get('why')->getContent('image-url') }}" alt="{{ $sections->get('why')->getContent('image-alt') }}"
+                <img src="{{ $sections->get('why')->getContent('image-url') }}"
+                     alt="{{ $sections->get('why')->getContent('image-alt') }}"
                      class="relative rounded-2xl shadow-2xl w-full h-auto">
             </div>
             <div class="order-1 lg:order-2 space-y-8">
@@ -125,120 +130,31 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Testimonial 1 -->
-            <div class="bg-white p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div class="flex items-center gap-1 mb-6">
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                </div>
-                <p class="text-earth/70 leading-relaxed mb-6 italic">
-                    "The process was very professional and transparent. I found my dream land in a short time."
-                </p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-sage/20 rounded-full flex items-center justify-center">
-                        <span class="text-sage font-serif text-lg">JL</span>
+            @foreach($testimonials as $testimonial)
+                <div class="bg-white p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center gap-1 mb-6">
+                        @for($i = 0; $i < $testimonial->rating; $i++)
+                            <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                            </svg>
+                        @endfor
                     </div>
-                    <div>
-                        <p class="font-medium text-earth">James L.</p>
-                        <p class="text-sm text-earth/60">Investor from Sydney</p>
+                    <p class="text-earth/70 leading-relaxed mb-6 italic">
+                        "{{ $testimonial->testimonial_text }}"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-sage/20 rounded-full flex items-center justify-center">
+                            <span
+                                class="text-sage font-serif text-lg">{{ $testimonial->acronym }}</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-earth">{{ $testimonial->client_initials ?? '' }} {{ $testimonial->client_name }}</p>
+                            <p class="text-sm text-earth/60">{{ $testimonial->client_title }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="bg-white p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div class="flex items-center gap-1 mb-6">
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                </div>
-                <p class="text-earth/70 leading-relaxed mb-6 italic">
-                    "Bali Terra Living made our investment journey seamless. The team's expertise and attention to
-                    detail exceeded our expectations."
-                </p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-sage/20 rounded-full flex items-center justify-center">
-                        <span class="text-sage font-serif text-lg">SM</span>
-                    </div>
-                    <div>
-                        <p class="font-medium text-earth">Sarah M.</p>
-                        <p class="text-sm text-earth/60">Homeowner from London</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="bg-white p-10 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                <div class="flex items-center gap-1 mb-6">
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <svg class="w-5 h-5 text-gold fill-current" viewBox="0 0 20 20">
-                        <path
-                            d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                </div>
-                <p class="text-earth/70 leading-relaxed mb-6 italic">
-                    "A truly exceptional experience. The villa we purchased is everything we dreamed of and more.
-                    Highly recommend!"
-                </p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-sage/20 rounded-full flex items-center justify-center">
-                        <span class="text-sage font-serif text-lg">DK</span>
-                    </div>
-                    <div>
-                        <p class="font-medium text-earth">David K.</p>
-                        <p class="text-sm text-earth/60">Investor from Singapore</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </x-landing-page.sections>
 

@@ -278,6 +278,38 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a
+                            href="{{ route('cp.testimonials.index') }}"
+                            @click="selected = (selected === 'Testimonial' ? '' : 'Testimonial')"
+                            class="menu-item group"
+                            :class=" (selected === 'Testimonial') && (page === 'Testimonial') ? 'menu-item-active' : 'menu-item-inactive'"
+                        >
+                            <svg
+                                :class="(selected === 'Testimonial') && (page === 'Testimonial') ? 'menu-item-icon-active'  :'menu-item-icon-inactive'"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    fill=""
+                                    d="M4 3h12c.55 0 1.02.2 1.41.59S18 4.45 18 5v7c0 .55-.2 1.02-.59 1.41S16.55 14 16 14h-1l-5 5v-5H4c-.55 0-1.02-.2-1.41-.59S2 12.55 2 12V5c0-.55.2-1.02.59-1.41S3.45 3 4 3zm11 2H4v1h11V5zm1 3H4v1h12V8zm-3 3H4v1h9v-1z"
+                                />
+                            </svg>
+
+                            <span
+                                class="menu-item-text"
+                                :class="sidebarToggle ? 'lg:hidden' : ''"
+                            >
+                                Testimonial
+                            </span>
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </nav>
