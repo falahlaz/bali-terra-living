@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/generate-symlink', function () {
+    Artisan::call('storage:link');
+
+    return 'ok';
+});
+
 Route::get('/', \App\Livewire\LandingPage\Index::class)->name('home.index');
 Route::get('/properties', \App\Livewire\LandingPage\Property\Index::class)->name('property.index');
 Route::get('/properties/{property:slug}', \App\Livewire\LandingPage\Property\Detail::class)->name('property.detail');
