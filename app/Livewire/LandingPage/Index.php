@@ -1,21 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Livewire\LandingPage;
 
+use App\Livewire\Forms\ContactSubmission\SubmitForm;
 use App\Models\AboutCard;
 use App\Models\Benefit;
 use App\Models\PageSection;
 use App\Models\Property;
+use App\Models\Setting;
 use App\Models\Testimonial;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Http\Request;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
-class IndexController extends Controller
+#[Layout('components.landing-page.layouts.app')]
+class Index extends Component
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public SubmitForm $contactSubmissionForm;
+
+    public bool $showWhatsAppModal = false;
+
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
     {
         $sections = PageSection::with([
             'contents',
@@ -25,6 +30,10 @@ class IndexController extends Controller
             ->orderBy('display_order')
             ->get()
             ->keyBy('section_key');
+
+        $contacts = Setting::where('setting_group', 'contact')
+            ->get()
+            ->keyBy('setting_key');
 
         $properties = Property::query()
             ->with([
@@ -48,11 +57,24 @@ class IndexController extends Controller
         $about_cards = AboutCard::where('is_active', true)->get();
         $benefits = Benefit::where('is_active', true)->get();
 
-        return view('landing-page.index')
+        return view('livewire.landing-page.index')
             ->with('properties', $properties)
             ->with('sections', $sections)
             ->with('testimonials', $testimonials)
             ->with('about_cards', $about_cards)
-            ->with('benefits', $benefits);
+            ->with('benefits', $benefits)
+            ->with('contacts', $contacts);
+    }
+
+    public function storeContactSubmission(): void
+    {
+        $this->contactSubmissionForm->store();
+        $this->contactSubmissionForm->reset();
+        $this->showWhatsAppModal = true;
+    }
+
+    public function closeModal(): void
+    {
+        $this->showWhatsAppModal = false;
     }
 }

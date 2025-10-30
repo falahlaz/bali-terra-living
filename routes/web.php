@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Http\Controllers\IndexController::class)->name('home.index');
-Route::get('/properties', [\App\Http\Controllers\PropertyController::class, 'index'])->name('property.index');
-Route::get('/properties/{property:slug}', [\App\Http\Controllers\PropertyController::class, 'show'])->name('property.detail');
-
-Route::post('/contacts', [ContactController::class, 'submit'])->name('contact.store');
+Route::get('/', \App\Livewire\LandingPage\Index::class)->name('home.index');
+Route::get('/properties', \App\Livewire\LandingPage\Property\Index::class)->name('property.index');
+Route::get('/properties/{property:slug}', \App\Livewire\LandingPage\Property\Detail::class)->name('property.detail');
 
 Route::prefix('/cp')->group(function () {
     Route::get('', fn () => redirect()->route('cp.dashboard.index'));

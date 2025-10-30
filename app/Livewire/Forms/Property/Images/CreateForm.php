@@ -22,7 +22,7 @@ class CreateForm extends Form
             }
 
             $images[] = [
-                'image_url' => '/storage'.$path,
+                'image_url' => '/storage/'.$path,
                 'path' => $path,
                 'name' => $image['name'],
                 'title' => $image['name'],
