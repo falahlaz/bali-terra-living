@@ -21,6 +21,7 @@
                 <h4 class="font-serif text-lg mb-6">Contact</h4>
                 <ul class="space-y-3 text-cream/70">
                     <li>{{ $contacts->get('address')->setting_value }}</li>
+                    <li>{{ $contacts->get('phone-number')->setting_value }}</li>
                     <li>{{ $contacts->get('country')->setting_value }}</li>
                     <li><a href="mailto:{{ $contacts->get('email')->setting_value }}" class="hover:text-cream transition-colors">{{ $contacts->get('email')->setting_value }}</a></li>
                 </ul>
